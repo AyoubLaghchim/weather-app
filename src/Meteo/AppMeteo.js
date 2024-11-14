@@ -46,7 +46,7 @@ function Grp204WeatherApp() {
     };
 
     return (
-        <div className="App">
+        <div className="weather-container">
             <h1 className="app-name">Application Météo grp204</h1>
             <div className="search-bar">
                 <input
@@ -67,16 +67,18 @@ function Grp204WeatherApp() {
                 </div>
             )}
             {weather && weather.data && weather.data.main && (
-                <div>
-                    <h2>{weather.data.name}, {weather.data.sys.country}</h2>
-                    <span>{toDateFunction()}</span>
-                    <img
-                        src={`https://openweathermap.org/img/wn/${weather.data.weather[0].icon}@2x.png`}
-                        alt={weather.data.weather[0].description}
-                    />
-                    <p>{Math.round(weather.data.main.temp)}°C</p>
-                    <p>Vitesse du vent : {weather.data.wind.speed} m/s</p>
-                </div>
+             <div className="weather-container">
+                <h2 className="location">{weather.data.name}, {weather.data.sys.country}</h2>
+                <span className="date">{toDateFunction()}</span>
+                <img
+                    className="weather-icon"
+                    src={`https://openweathermap.org/img/wn/${weather.data.weather[0].icon}@2x.png`}
+                    alt={weather.data.weather[0].description}
+                />
+                <p className="temperature">{Math.round(weather.data.main.temp)}°C</p>
+                <p className="wind-speed">Vitesse du vent : {weather.data.wind.speed} m/s</p>
+             </div>
+            
             )}
         </div>
     );
